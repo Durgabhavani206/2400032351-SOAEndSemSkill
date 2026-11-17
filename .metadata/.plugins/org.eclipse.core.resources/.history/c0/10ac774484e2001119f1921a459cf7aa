@@ -1,0 +1,19 @@
+spring.application.name=apigateway
+
+
+# Gateway Port
+server.port=8080
+
+# Eureka Server URL
+eureka.client.service-url.defaultZone=http://localhost:9000/eureka
+
+# Eureka Client Configuration
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+
+# Gateway Route Configuration
+spring.cloud.gateway.server.webmvc.routes[0].id=driver-service
+
+spring.cloud.gateway.server.webmvc.routes[0].uri=lb://DRIVER-SERVICE
+
+spring.cloud.gateway.server.webmvc.routes[0].predicates[0]=Path=/drivers/**
